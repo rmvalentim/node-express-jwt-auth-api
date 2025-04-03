@@ -107,18 +107,6 @@ GET /ping
 }
 ```
 
-### 4. Rota Protegida (/dashboard)
-```http
-GET /dashboard
-Authorization: Bearer <JWT_TOKEN>
-```
-**Resposta:**
-```json
-{
-    "message": "Welcome to your dashboard!"
-}
-```
-
 ## Considerações
 - A API está configurada para SQLite por padrão, mas pode ser alterada para MySQL ou PostgreSQL modificando as variáveis no `.env`.
 - O banco de dados é sincronizado automaticamente ao iniciar a aplicação.
@@ -126,4 +114,3 @@ Authorization: Bearer <JWT_TOKEN>
 
 ## Autor
 - Rafael Valentim 🚀
-
