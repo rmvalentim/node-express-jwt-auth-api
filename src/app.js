@@ -3,6 +3,7 @@ import passport from './config/passportConfig.js';
 import authRoutes from './routes/authRoutes.js';
 import pingRoutes from './routes/pingRoutes.js';
 import dashboardRoutes from './routes/dashboardRoutes.js';
+import adminRoutes from './routes/adminRoutes.js';
 import db from './models/db.js';
 import './config/dotenvConfig.js';
 import setupSwagger from './config/swaggerConfig.js';
@@ -16,6 +17,7 @@ setupSwagger(app);
 app.use(authRoutes);
 app.use(pingRoutes);
 app.use(dashboardRoutes);
+app.use(adminRoutes);
 
 db.sequelize.sync().then(() => {
     console.log('Database synchronized successfully');

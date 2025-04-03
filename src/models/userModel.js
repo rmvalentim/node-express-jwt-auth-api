@@ -2,6 +2,7 @@ import { DataTypes } from 'sequelize';
 import sequelize from '../config/databaseConfig.js';
 import bcrypt from 'bcrypt';
 import '../config/dotenvConfig.js';
+import ROLES from '../constants/roles.js';
 
 const saltRounds = parseInt(process.env.SALT_ROUNDS);
 
@@ -21,8 +22,8 @@ const User = sequelize.define('User', {
         allowNull: false,
     },
     role: {
-        type: DataTypes.ENUM('admin', 'user'),
-        defaultValue: 'user',
+        type: DataTypes.ENUM(Object.values(ROLES)),
+        defaultValue: ROLES.USER,
         allowNull: false
     }
 }, {
