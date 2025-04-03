@@ -14,14 +14,14 @@ export const login = async (req, res) => {
         return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    const token = jwt.sign({id: user.id, username: user.username}, SECRET_KEY, {expiresIn: JWT_EXPIRATION});
+    const token = jwt.sign({id: user.id, username: user.username, role: user.role }, SECRET_KEY, {expiresIn: JWT_EXPIRATION});
     res.json({ token });  
 };
 
 export const register = async (req, res) => {
-    const { username, password } = req.body;
+    const { username, password, role } = req.body;
     try {
-        const user = await User.create({ username, password });
+        const user = await User.create({ username, password, role });
         const { password: _, ...userWithoutPassword } = user.get({ plain: true });
         res.status(201).json({ message: 'User created successfully', user: userWithoutPassword });
     } catch (error){

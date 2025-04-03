@@ -1,6 +1,7 @@
 import express from 'express';
 import { dashboard } from '../controllers/dashboardController.js';
 import { authenticateJWT } from '../middleware/authMiddleware.js';
+import authorizeRole from '../middleware/roleMiddleware.js';
 const router = express.Router();
 
 /**
@@ -17,6 +18,6 @@ const router = express.Router();
  *       401:
  *         description: Não autorizado
  */
-router.get('/dashboard', authenticateJWT, dashboard);
+router.get('/dashboard', authenticateJWT, authorizeRole('admin'), dashboard);
 
 export default router;
