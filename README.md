@@ -40,12 +40,7 @@ DB_DIALECT=sqlite
 DB_STORAGE=./database.sqlite
 ```
 
-### 4. Inicializar o banco de dados
-```sh
- npm run migrate
-```
-
-### 5. Iniciar a API
+### 4. Iniciar a API
 ```sh
  npm start
 ```
